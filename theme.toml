@@ -1,0 +1,17 @@
+name = "Wave"
+license = "MIT"
+licenselink = "https://gitlab.com/syui/hugo-theme-wave/tree/master/LICENSE"
+description = "Hugo Themes Wave"
+homepage = "https://syui.gitlab.io"
+tags = ["blog"]
+features = ["wave", "bootstrap", "talaria", "font-awesome", "lunr.js", "bower", "particles.js", "createjs"]
+min_version=0.15
+
+[author]
+  name = "syui"
+  homepage = "https://syui.gitlab.io"
+
+[original]
+    author = "syui"
+    homepage = "https://syui.github.io"
+    repo = "https://github.com/syui/hugo-theme-arch"

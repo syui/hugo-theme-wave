@@ -1,0 +1,45 @@
+{{ partial "head" . }}
+{{ partial "header" . }}
+
+<div id="container">
+   <div class="outer">
+
+<div id="cal-heatmap"></div>
+        <div id="example-heatmap"></div>
+	<script type="text/javascript">
+	var cal = new CalHeatMap();
+	cal.init({
+		itemSelector: "#example-heatmap",
+		domain: "week",
+		subDomain: "hour",
+		data: "/hugo-theme-wave/json/datas-years.json",
+		start: new Date(2000, 0, 5),
+		cellSize: 10,
+		range: 2,
+		previousSelector: "#example-c-PreviousDomain-selector",
+		nextSelector: "#example-c-NextDomain-selector",
+		legend: [2, 4, 6, 8],
+      		tooltip: true 
+	});
+	</script>
+        <div id="blog-archives" class="category">
+          {{ .Content }}
+          {{ range (where .Site.Pages "Type" "post") }}
+            <h1>
+		<time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.date_format }}</time>
+                <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+            </h1>
+	
+          {{ end }}
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+{{ partial "footer" . }}
+
+
+</body>
+</html>

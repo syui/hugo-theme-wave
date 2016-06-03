@@ -1,0 +1,30 @@
+<header class="article-header">
+    
+    <h1 class="article-title" itemprop="name">
+	<a href="{{ .Permalink }}" class="permalink">{{ .Title }}</a>
+    </h1>
+	<time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.date_format }}</time>
+    <div class="article-meta">
+
+        {{ $categoryLen := len .Params.categories }}
+        {{ if gt $categoryLen 0 }}
+        <div class="article-category">
+            <i class="fa fa-folder"></i>
+            {{ range $k, $v := .Params.categories }}
+            <a class="article-category-link" href="{{ $.Site.BaseURL }}categories/{{ . | urlize | lower }}">{{ . }}</a>
+            {{ if lt $k (sub $categoryLen 1) }},{{ end }}
+            {{ end }}
+        </div>
+        {{ end }}
+        {{ $tagsLen := len .Params.tags }}
+        {{ if gt $tagsLen 0 }}
+        <div class="article-category">
+		<i class="fa fa-chevron-right"></i>
+            {{ range $k, $v := .Params.tags }}
+            <a class="article-category-link" href="{{ $.Site.BaseURL }}tags/{{ . | urlize | lower }}">{{ . }}</a>
+            {{ if lt $k (sub $tagsLen 1) }}, {{ end }}
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</header>

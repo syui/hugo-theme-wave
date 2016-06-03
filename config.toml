@@ -1,0 +1,36 @@
+baseurl = "https://syui.gitlab.io/hugo-theme-wave/"
+languageCode = "en-us"
+title = "MY BLOG"
+googleAnalytics = ""
+paginate = 10
+#theme = "hugo-theme-wave"
+
+[permalinks]
+    post = "/:year/:month/:day/:slug"
+
+[params]
+    location = ""
+    site_description = ""
+    copyright  = "Powered by [Hugo](//gohugo.io). Theme by [wave](https://gitlab.com/syui/hugo-theme-wave)."
+    date_format = "2006-01-02"
+
+[[params.menu]]
+    before = true
+    label  = "Home"
+    link   = "/"
+
+[[params.menu]]
+    before = false
+    label  = "Tags"
+    link   = "tags/"
+
+[[params.menu]]
+    before = false
+    label  = "Categories"
+    link   = "categories/"
+
+[params.widgets]
+    recent_articles = true
+    categories = true
+    tags = true
+    tag_cloud = true

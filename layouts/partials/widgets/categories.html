@@ -1,0 +1,19 @@
+{{ if .Site.Params.widgets.categories }}
+{{ if not (eq (len .Site.Taxonomies.categories) 0) }}
+<div class="widget-wrap">
+    <div class="widget">
+        <ul class="category-list">
+    <h3 class="widget-title">Categories {{with .Site.Data.l10n.widgets.categories.title}}{{.}}{{end}}</h3>
+            {{ range $name, $items := .Site.Taxonomies.categories }}
+                <a class="category-list-link" href="{{ $.Site.BaseURL }}categories/{{ $name | urlize | lower }}">
+            <li class="category-list-item">
+                    {{ $name }}
+                <span class="category-list-count">{{ len $items }}</span>
+            </li>
+                </a>
+            {{ end }}
+        </ul>
+    </div>
+</div>
+{{ end }}
+{{ end }}

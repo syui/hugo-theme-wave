@@ -1,0 +1,56 @@
+<section id="main">
+
+    {{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
+    {{ range $paginator.Pages }}
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+
+	    <div class="article-inner">
+
+            {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
+            <a href="{{ .Permalink }}" itemprop="url">
+                <img src="{{ .Site.BaseURL }}{{ .Params.banner }}" class="article-banner"> {{ end }}
+            </a>
+
+            {{ partial "article_header" . }}
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    {{ .Summary }} ...
+                </p>
+                <p class="article-more-link">
+                    <a href="{{ .Permalink }}">
+			    Read more
+			    <!--
+                        {{with .Site.Data.l10n.articles.read_more}}{{.}}{{end}}
+			-->
+                    </a>
+                </p>
+            </div>
+	    <!--
+            {{ partial "article_footer" . }}
+	    -->
+        </div>
+    </article>
+    {{ end }}
+    <div class="heatmap">
+	    <h3>Calendar Activities</h3>
+        <div id="cal-heatmap"></div>
+        <div id="example-heatmap"></div>
+	<script type="text/javascript">
+	var cal = new CalHeatMap();
+	cal.init({
+		itemSelector: "#example-heatmap",
+		domain: "day",
+		data: "/hugo-theme-wave/json/datas-years.json",
+		start: new Date(2000, 0),
+		cellSize: 9,
+		range: 14,
+		previousSelector: "#example-b-PreviousDomain-selector",
+		nextSelector: "#example-b-NextDomain-selector",
+		legend: [2, 4, 6, 8],
+      		tooltip: true 
+	});
+	</script>
+    </div>
+    {{ partial "pagination" . }}
+</section>
+<!-- // main section -->

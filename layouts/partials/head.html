@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+<head>
+    <title>{{ .Title }}</title>
+    {{ .Hugo.Generator }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {{ with .Site.Params.author }}
+    <meta name="author" content="{{ . }}">
+    {{ end }}
+    {{ with .Site.Params.site_description }}
+    <meta name="description" content="{{ . }}">
+    {{ end }}
+
+    <script src="{{ .Site.BaseURL }}bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="{{ .Site.BaseURL }}bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ .Site.BaseURL }}bower_components/bootstrap/js/dropdowns-enhancement.js"></script>
+    <script src="{{ .Site.BaseURL }}bower_components/bluebird/js/browser/bluebird.js"></script>
+    <script src="{{ .Site.BaseURL }}/bower_components/talaria/dist/talaria.js"></script>
+    <script src="{{ .Site.BaseURL }}bower_components/d3/d3.min.js" charset="utf-8"></script>
+    <script src="{{ .Site.BaseURL }}bower_components/cal-heatmap/cal-heatmap.min.js"></script>
+    <script src="{{ .Site.BaseURL }}bower_components/highlightjs/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+
+    <link rel="icon" href="{{ .Site.BaseURL }}favicon.ico" />
+    <link rel="apple-touch-icon" href="{{ .Site.BaseURL }}apple-touch-icon.png" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/highlightjs/styles/monokai.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/bootstrap/css/dropdowns-enhancement.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/talaria/dist/talaria.css" />   
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/createjs/createjs.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/icomoon/css/icomoon.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/mobile.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/cal-heatmap/cal-heatmap.css" />
+
+    {{ if .RSSlink }}
+    <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .RSSlink }}"/>
+    <link rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .RSSlink }}" />
+    {{ end }}
+
+    <!--
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="bower_components/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="{{ .Site.BaseURL }}bower_components/jquery.hotkeys/hotkeys.js"></script>
+    -->
+</head>
+<body>
+<div class="container">

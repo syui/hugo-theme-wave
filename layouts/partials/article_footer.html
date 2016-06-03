@@ -1,0 +1,23 @@
+<div class="tweet-footer">
+<a href="http://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}" target="_blank" title="Twitter" >
+<span class="tweet-botton">
+    	<i class="fa fa-twitter" aria-hidden="true"></i>
+    	   Compose new Tweet 
+    </span>
+    </a>
+</div>
+
+<footer class="article-footer">
+
+    <!--
+    <a data-url="{{ .Permalink }}" data-id="{{ .UniqueID }}" class="article-share-link">
+        {{with .Site.Data.l10n.articles.share}}{{.}}{{end}}
+    </a>
+    -->
+    {{ if not (eq .Site.DisqusShortname "") }}
+
+    <a href="{{ .Permalink }}/#disqus_thread" class="article-comment-link">
+        {{with .Site.Data.l10n.articles.comments}}{{.}}{{end}}
+    </a>
+    {{end}}
+</footer>

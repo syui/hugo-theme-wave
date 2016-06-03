@@ -1,0 +1,57 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="../static/js/jquery.xdomainajax.js"></script> 
+<script src="../static/bower_components/d3/d3.min.js" charset="utf-8"></script>
+<script src="../static/bower_components/cal-heatmap/cal-heatmap.min.js"></script>
+<link rel="stylesheet" href="../static/bower_components/cal-heatmap/cal-heatmap.css" />
+<!--<script src="https://raw.githubusercontent.com/syui/jquery.fn/master/cross-domain-ajax/jquery.xdomainajax.js"></script>-->
+<!--diff : https://github.com/syui/jquery.fn/blob/master/cross-domain-ajax/jquery.xdomainajax.js#L62 -->
+<h3>Calendar Activities</h3>
+<div id="cal-heatmap"></div>
+<div id="example-heatmap"></div>
+
+<script>
+jQuery(function ($) {
+	var json;
+    	$.ajax({
+        type: 'GET',
+        url: 'https://gitlab.com/u/syui/calendar',
+        dataType: 'html',
+    	async: false,
+    	cache: false,
+    	success: function(data) {
+		var content = $(data.responseText).find('script').html();
+		var tmp = content.replace("<![CDATA[", "").replace("]]>", "");
+		var s = tmp.indexOf( "{" );
+		var e = tmp.indexOf( "}" );
+		json = tmp.substring( s, e+1 );
+		$('#gitlab-calendar-activities').text(json);
+    	}
+	});
+	setTimeout( $('#example-heatmap').each(function () {
+	//setTimeout( function() {
+	    if( json != null ){
+		var obj = $.parseJSON(json);
+  		var now = new Date();
+  		new CalHeatMap().init({
+  		  data: obj,
+  		  domain: 'month',
+  		  domainLabelFormat: '%Y-%m',
+  		  itemSelector: '#example-heatmap',
+  		  legend: [1, 3, 5, 7],
+  		  legendColors: {
+  		  	min: "#efefef",
+  		  	max: "steelblue",
+  		  	empty: "#efefef"
+  		  },
+        	  tooltip: true,
+  		  start: new Date(now.getFullYear(), now.getMonth() - 9)
+  		});
+	    } else {
+	        setTimeout( arguments.callee, 100 );
+	    }
+	}));
+});
+</script>
+
+<div id="gitlab-calendar-activities" style="display:none;"></div>
+
