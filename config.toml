@@ -1,4 +1,4 @@
-baseurl = "https://syui.gitlab.io/hugo-theme-wave/"
+baseurl = "//theme.syui.cf/"
 languageCode = "en-us"
 title = "MY BLOG"
 googleAnalytics = ""
