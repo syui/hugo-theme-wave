@@ -26,7 +26,7 @@
           {{ .Content }}
           {{ range (where .Site.Pages "Type" "post") }}
             <h1>
-		<time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.date_format }}</time>
+		<time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format "2006-01-02" }}</time>
                 <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
             </h1>
 	

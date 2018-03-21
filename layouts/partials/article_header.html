@@ -3,7 +3,7 @@
     <h1 class="article-title" itemprop="name">
 	<a href="{{ .Permalink }}" class="permalink">{{ .Title }}</a>
     </h1>
-	<time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.date_format }}</time>
+	<time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format "2006-01-02" }}</time>
     <div class="article-meta">
 
         
