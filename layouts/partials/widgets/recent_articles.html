@@ -6,7 +6,7 @@
 		<li id="first-recent"><a href="/index.xml" id="firstmove" class="move"><h3 class="widget-title">
 			Posts
     </h3></a></li>
-            {{ range first 10 (where .Site.Pages "Type" "post") }}
+            {{ range first 10 (where .Site.RegularPages "Type" "post") }}
 
 <li><a href="{{ .Permalink }}" class="move">  {{ .Title }}</a> </li>
             {{ end }}

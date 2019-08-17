@@ -1,7 +1,14 @@
 <section id="main">
 
-    {{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
-    {{ range $paginator.Pages }}
+    {{ $pages := .Pages }}
+    {{ if .IsHome }}
+    {{ $pages = .Site.RegularPages }}
+    {{ end }}
+    {{ $paginator := .Paginate $pages }}
+    <!--
+        {{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
+    -->
+        {{ range $paginator.Pages }}
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
 
 	    <div class="article-inner">

@@ -14,6 +14,7 @@ paginate = 10
     copyright  = "Powered by [Hugo](//gohugo.io). Theme by [wave](https://gitlab.com/syui/hugo-theme-wave)."
     date_format = "2006-01-02"
     dateformat = "2006-01-02"
+    mainSections = "posts"
 
 [[params.menu]]
     before = true

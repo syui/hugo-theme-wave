@@ -2,21 +2,25 @@
 
 <div id="container">
     <div class="outer">
-        <section id="main">
-            <section class="archives-wrap">
-                <div class="archive-category-wrap">
-                    <span class="archive-category">{{ .Title }}</span>
-                </div>
-                <div class="archives">
-                    {{ $paginator := .Paginate .Data.Pages }}
-                    {{ range $paginator.Pages }}
-                        {{ .Render "summary" }} 
-                    {{ end }}
-                </div>
-            </section>
-            {{ partial "pagination" . }}
-        </section>
-        {{ partial "sidebar" . }}
+	<section id="main">
+	    <section class="archives-wrap">
+		<div class="archive-category-wrap">
+		    <span class="archive-category">{{ .Title }}</span>
+		</div>
+		<div class="archives">
+		    {{ $pages := .Pages }}
+		    {{ if .IsHome }}
+		    {{ $pages = .Site.RegularPages }}
+		    {{ end }}
+		    {{ $paginator := .Paginate .Data.Site.RegularPages }}
+		    {{ range $paginator.Pages }}
+		    {{ .Render "summary" }} 
+		    {{ end }}
+		</div>
+	    </section>
+	    {{ partial "pagination" . }}
+	</section>
+	{{ partial "sidebar" . }}
     </div>
 </div>
 
