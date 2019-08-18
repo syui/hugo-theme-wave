@@ -2,7 +2,6 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 <head>
     <title>{{ .Title }}</title>
-    {{ .Hugo.Generator }}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     {{ with .Site.Params.author }}
@@ -41,9 +40,8 @@
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/mobile.css" />
     <link rel="stylesheet" href="{{ .Site.BaseURL }}bower_components/cal-heatmap/cal-heatmap.css" />
 
-    {{ if .RSSLink }}
-    <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .RSSLink }}"/>
-    <link rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .RSSLink }}" />
+    {{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end }}
 
     <!--
